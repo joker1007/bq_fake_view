@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["joker1007"]
   spec.email         = ["kakyoin.hierophant@gmail.com"]
 
-  spec.summary       = %q{Save hash data to bigquery as View}
-  spec.description   = %q{Save hash data to bigquery as View}
+  spec.summary       = %q{This gem create Static SQL View on Google Bigquery from Hash data}
+  spec.description   = %q{This gem create Static SQL View on Google Bigquery from Hash data}
   spec.homepage      = "https://github.com/joker1007/bq_fake_view"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
