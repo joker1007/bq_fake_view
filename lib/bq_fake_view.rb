@@ -1,5 +1,7 @@
 require "bq_fake_view/version"
 
+require 'active_support/core_ext/time'
+require 'active_support/core_ext/date'
 require 'google/apis/bigquery_v2'
 
 class BqFakeView
@@ -15,7 +17,7 @@ class BqFakeView
   def create_view(project_id, dataset_id, name, rows, schema)
     query = view_query(rows, schema)
 
-    Bigquery.client.insert_table(project_id, dataset_id, Google::Apis::BigqueryV2::Table.new({
+    @bigquery.insert_table(project_id, dataset_id, Google::Apis::BigqueryV2::Table.new({
       table_reference: {
         project_id: project_id,
         dataset_id: dataset_id,
@@ -36,7 +38,7 @@ class BqFakeView
 
   def sql_from_hash(row, schema)
     cols = row.map do |k, v|
-      field = schema.find { |f| f[:name] == k }
+      field = schema.find { |f| f[:name].to_s == k.to_s }
       raise FieldNotFound, "#{k} is not found from schema" unless field
       "#{cast_to_sql_value(v, field[:type])} as #{k}"
     end
