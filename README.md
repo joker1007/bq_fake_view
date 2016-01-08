@@ -1,4 +1,6 @@
 # BqFakeView
+[![Gem Version](https://badge.fury.io/rb/bq_fake_view.svg)](https://badge.fury.io/rb/bq_fake_view)
+
 This gem create Static SQL View on Google Bigquery from Hash data.
 
 It is main purpose to create fake data for testing.
