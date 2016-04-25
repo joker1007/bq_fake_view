@@ -51,7 +51,7 @@ class BqFakeView
   def cast_to_sql_value(value, type)
     case value
     when String
-      %Q{"#{value.gsub(/"/, %q{\"})}"}
+      %Q{"#{value.gsub('\\', '\\\\\\\\').gsub(/"/, %q{\"})}"}
     when Numeric
       value.to_s
     when Time, Date
